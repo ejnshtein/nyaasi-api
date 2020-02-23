@@ -14,6 +14,10 @@ export interface NyaaOptions {
 
 export interface NyaaConstructor {
   new (options?: NyaaOptions): Nyaa
+
+  search (query: string, options?: SearchOptions, params?: RequestOptions): Promise<nyaa.SearchResult>
+
+  getTorrent (id: number, options?: GetTorrentOptions, params?: RequestOptions): Promise<nyaa.ApiTorrent>
 }
 
 interface SearchOptions {
@@ -50,9 +54,18 @@ export interface AgentOptions {
 
 export interface AgentConstructor {
   new (options: AgentOptions): Agent
+
+  login (username: string, password: string, options?: AgentMethodOptions): Promise<nyaa.UserProfile>
+
+  saveSession (path: string, cookies: string[]): Promise<boolean>
+
+  call (url: string, options?: RequestOptions): Promise<String | Buffer | Stream | Object | Array>
+
+  callApi (url: string, options?: RequestOptions): Promise<Object | Array>
+
 }
 
-interface AgentMethodOptions extends RequestOptions {
+interface MethodOptions extends RequestOptions {
   baseUrl: string
 }
 
@@ -62,7 +75,7 @@ export interface Agent {
 
   fullCookies: string
 
-  login (username: string, password: string, options?: AgentMethodOptions): Promise<nyaa.UserProfile>
+  login (username: string, password: string, options?: MethodOptions): Promise<nyaa.UserProfile>
 
   logiWithSession (path: string): Promise<nyaa.UserProfile>
 
@@ -74,5 +87,4 @@ export interface Agent {
 
   callApi (url: string, options?: RequestOptions): Promise<Object | Array>
 
-  
 }

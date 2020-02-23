@@ -1,3 +1,3 @@
-# nyaa-api
+# nyaasi
 
 Documentation comming soon...
