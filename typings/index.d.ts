@@ -18,6 +18,9 @@ export interface NyaaConstructor {
   search (query: string, options?: SearchOptions, params?: RequestOptions): Promise<nyaa.SearchResult>
 
   getTorrent (id: number, options?: GetTorrentOptions, params?: RequestOptions): Promise<nyaa.ApiTorrent>
+
+  getTorrentAnonymous (id: number, options?: GetTorrentOptions, params?: RequestOptions): Promise<nyaa.ViewTorrent>
+
 }
 
 interface SearchOptions {
@@ -36,6 +39,8 @@ export interface Nyaa {
   search (query: string, options?: SearchOptions, params?: RequestOptions): Promise<nyaa.SearchResult>
 
   getTorrent (id: number, options?: GetTorrentOptions, params?: RequestOptions): Promise<nyaa.ApiTorrent>
+
+  getTorrentAnonymous (id: number, options?: GetTorrentOptions, params?: RequestOptions): Promise<nyaa.ViewTorrent>
 
 }
 

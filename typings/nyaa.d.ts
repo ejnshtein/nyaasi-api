@@ -28,6 +28,36 @@ export interface ApiTorrent {
   comments?: TorrentComment[]
 }
 
+export interface ViewTorrent {
+  id: number
+  title: string
+  file_size: string
+  file_size_bytes: string
+  category: {
+    title: string
+    code: string
+  }[]
+  entry: '[Remake]' | '[Trusted]' | ''
+  links: {
+    torrent: string
+    magnet: string
+  }
+  timestamp: number
+  submitter: {
+    name: string
+    link: string | null
+  }
+  description: string
+  info: string
+  info_hash: string
+  stats: {
+    seeders: number
+    leechers: number
+    downloaded: number
+  }
+  comments?: TorrentComment[]
+}
+
 export interface UserProfile {
   id: number
   username: string

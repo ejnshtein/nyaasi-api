@@ -107,6 +107,55 @@ export const parseSearch = (host = 'https://nyaa.si', html) => {
   }
 }
 
+export const parseTorrent = (id, host = 'https://nyaa.si', html) => {
+  const select = cheerio.load(html)
+
+  select('.servers-cost-money1').remove()
+
+  const entryMatch = select('body > div.container > div:first-of-type')
+    .attr('class')
+
+  return {
+    id: typeof id === 'string' ? Number.parseInt(id) : id,
+    title: select('body > div.container > div.panel:first-of-type > div.panel-heading > h3').text().trim(),
+    file_size: select('body > div.container > div.panel > div.panel-body > div:nth-child(4) > div:nth-child(2)').html(),
+    file_size_bytes: bytes.parse(select('body > div.container > div.panel > div.panel-body > div:nth-child(4) > div:nth-child(2)').html()),
+    category: select('body > div.container > div.panel > div.panel-body > div:nth-child(1) > div:nth-child(2)')
+      .children('a')
+      .map((i, el) => (
+        {
+          title: el.children[0].data,
+          code: el.attribs['href'].match(/c=(\S+)/i)[1]
+        }
+      )
+      ).get(),
+    entry: getEntry(
+      entryMatch.match(/panel-(\S+)$/i)[1]
+    ),
+    links: {
+      torrent: host + select('body > div.container > div.panel > div:last-of-type > a:first-of-type').attr('href'),
+      magnet: select('body > div.container > div.panel > div:last-of-type > a:last-of-type').attr('href')
+    },
+    timestamp: Number.parseInt(select('body > div.container > div.panel > div.panel-body > div:nth-child(1) > div:nth-child(4)').attr('data-timestamp')) * 1000,
+    submitter: select('body > div.container > div.panel > div.panel-body > div:nth-child(2) > div:nth-child(2) > a').html()
+      ? {
+        name: select('body > div.container > div.panel > div.panel-body > div:nth-child(2) > div:nth-child(2) > a').html(),
+        link: host + select('body > div.container > div.panel > div.panel-body > div:nth-child(2) > div:nth-child(2) > a').attr('href')
+      } : {
+        name: 'Anonymous',
+        link: null
+      },
+    description: select('#torrent-description').html(),
+    info: select('body > div.container > div.panel > div.panel-body > div:nth-child(3) > div:nth-child(2) a').attr('href') || 'No information',
+    info_hash: select('body > div.container > div.panel > div.panel-body > div:nth-child(5) > div.col-md-5 > kbd').html(),
+    stats: {
+      seeders: Number.parseInt(select('body > div.container > div.panel > div.panel-body > div:nth-child(2) > div:nth-child(4) > span').html()),
+      leechers: Number.parseInt(select('body > div.container > div.panel > div.panel-body > div:nth-child(3) > div:nth-child(4) > span').html()),
+      downloaded: Number.parseInt(select('body > div.container > div.panel > div.panel-body > div:nth-child(4) > div:nth-child(4)').html())
+    }
+  }
+}
+
 function getEntry (entry) {
   switch (entry) {
     case 'danger':
