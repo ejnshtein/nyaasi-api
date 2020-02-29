@@ -1,6 +1,6 @@
 {
   "name": "@ejnshtein/nyaasi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Nyaa.si api wrapper for Node 13.5 and newer",
   "main": "Nyaa.js",
   "scripts": {},
@@ -23,7 +23,7 @@
     "standard": "^14.3.1"
   },
   "dependencies": {
-    "@ejnshtein/smol-request": "^1.0.6",
+    "@ejnshtein/smol-request": "^1.0.7",
     "bytes-iec": "^3.1.0",
     "cheerio": "^1.0.0-rc.3",
     "deepmerge": "^4.2.2",
