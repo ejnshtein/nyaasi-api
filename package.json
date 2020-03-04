@@ -1,6 +1,6 @@
 {
   "name": "@ejnshtein/nyaasi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Nyaa.si api wrapper for Node 13.5 and newer",
   "main": "Nyaa.js",
   "scripts": {},

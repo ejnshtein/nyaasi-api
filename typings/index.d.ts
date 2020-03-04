@@ -34,6 +34,8 @@ interface GetTorrentOptions {
 
 export interface Nyaa {
 
+  agent: Agent
+
   getMe (): Promise<nyaa.UserProfile>
 
   search (query: string, options?: SearchOptions, params?: RequestOptions): Promise<nyaa.SearchResult>
