@@ -117,7 +117,7 @@ export const parseTorrent = (id, host = 'https://nyaa.si', html) => {
 
   return {
     id: typeof id === 'string' ? Number.parseInt(id) : id,
-    title: select('body > div.container > div.panel:first-of-type > div.panel-heading > h3').text().trim(),
+    name: select('body > div.container > div.panel:first-of-type > div.panel-heading > h3').text().trim(),
     file_size: select('body > div.container > div.panel > div.panel-body > div:nth-child(4) > div:nth-child(2)').html(),
     file_size_bytes: bytes.parse(select('body > div.container > div.panel > div.panel-body > div:nth-child(4) > div:nth-child(2)').html()),
     category: select('body > div.container > div.panel > div.panel-body > div:nth-child(1) > div:nth-child(2)')

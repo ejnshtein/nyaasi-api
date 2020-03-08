@@ -30,7 +30,7 @@ export interface ApiTorrent {
 
 export interface ViewTorrent {
   id: number
-  title: string
+  name: string
   file_size: string
   file_size_bytes: string
   category: {
