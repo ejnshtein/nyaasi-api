@@ -7,6 +7,7 @@ import {
   SearchResult,
   ViewTorrent
 } from './types/nyaa'
+import { URL } from 'url'
 
 export const getCSRFToken = (html: string): string => {
   const selector = cheerio.load(html)
