@@ -15,9 +15,6 @@ import {
 import { Agent } from './Agent'
 import { Profile, SearchResult, ViewTorrent } from './types/nyaa'
 
-export { Agent } from './Agent'
-export { NyaaRss } from './NyaaRss'
-
 const DefaultOptions: AgentOptions = {
   host: 'https://nyaa.si',
   apiHost: 'https://nyaa.si/api'

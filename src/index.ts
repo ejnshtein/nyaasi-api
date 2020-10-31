@@ -1,4 +1,4 @@
-export * from './Agent'
-export * from './Nyaa'
-export * from './NyaaRss'
-export * from './Scraper'
+export { Agent } from './Agent'
+export { Nyaa } from './Nyaa'
+export { NyaaRss } from './NyaaRss'
+export * as Scraper from './Scraper'
