@@ -1,9 +1,9 @@
 {
   "name": "@ejnshtein/nyaasi",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Nyaa.si api wrapper for Node written in Typescript",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build-ts": "tsc",
     "lint": "eslint ./src --ext .ts"
