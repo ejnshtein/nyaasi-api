@@ -1,3 +1,50 @@
+export interface Profile {
+  id: number
+  username: string
+  avatar: string
+  class: string
+  created_at: Date
+}
+
+export type Entry = '[Remake]' | '[Trusted]' | null
+
+export interface Comment {
+  /**
+   * Comment id
+   */
+  id: number
+
+  /**
+   * Commenter
+   */
+  from: {
+    /**
+     * Commenter username
+     */
+    username: string
+
+    /**
+     * Avatar absolute url
+     */
+    avatar: string
+  }
+
+  /**
+   * Comment timestamp UTC
+   */
+  timestamp: number
+
+  /**
+   * Publish date
+   */
+  publish_date: Date
+
+  /**
+   * Comment text
+   */
+  text: string
+}
+
 export interface ApiTorrent {
   id: number
   name: string
@@ -15,7 +62,7 @@ export interface ApiTorrent {
   hash_b32: string
   hash_hex: string
   files: {
-    [x as string]: number
+    [x: string]: number
   }
   filesize: number
   magnet: string
@@ -25,19 +72,19 @@ export interface ApiTorrent {
     seeders: number
   }
   creation_date: string
-  comments?: TorrentComment[]
+  comments?: Comment[]
 }
 
 export interface ViewTorrent {
   id: number
   name: string
   file_size: string
-  file_size_bytes: string
+  file_size_bytes: number
   category: {
-    title: string
+    label: string
     code: string
   }[]
-  entry: '[Remake]' | '[Trusted]' | ''
+  entry: Entry
   links: {
     torrent: string
     magnet: string
@@ -45,7 +92,7 @@ export interface ViewTorrent {
   timestamp: number
   submitter: {
     name: string
-    link: string | null
+    link?: string
   }
   description: string
   info: string
@@ -55,35 +102,10 @@ export interface ViewTorrent {
     leechers: number
     downloaded: number
   }
-  comments?: TorrentComment[]
+  comments?: Comment[]
 }
 
-export interface UserProfile {
-  id: number
-  username: string
-  avatar: string
-  class: string
-  created_at: Date
-}
-
-export interface TorrentComment {
-  id: number
-  from: {
-    username: string
-    avatar: string
-  }
-  timestamp: number
-  publish_date: Date
-  text: string
-}
-
-export interface SearchResult {
-  current_page: number
-  last_page: number
-  files: SearchResultFiles[]
-}
-
-export interface SearchResultFiles {
+export interface SearchFile {
   id: number
   category: {
     label: string
@@ -96,12 +118,18 @@ export interface SearchResultFiles {
     magnet: string
   }
   file_size: string
-  file_size_bytes: string
+  file_size_bytes: number
   timestamp: number
   stats: {
-    dowloaded: number
+    downloaded: number
     seeders: number
     leechers: number
   }
-  entry: '[Remake}' | '[Trusted]' | ''
+  entry: 'remake' | 'trusted' | null
+}
+
+export interface SearchResult {
+  current_page: number
+  last_page: number
+  files: SearchFile[]
 }

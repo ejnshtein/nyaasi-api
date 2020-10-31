@@ -18,16 +18,12 @@ const parser = new RssParser({
   }
 })
 
-class NyaaRss {
-  static async get () {
+export class NyaaRss {
+  static async get() {
     const data = await parser.parseURL('https://nyaa.si/?page=rss')
-    data.items.forEach(el => {
+    data.items.forEach((el) => {
       el.id = Number.parseInt(el.guid.split('/').pop())
     })
     return data
   }
-}
-
-export {
-  NyaaRss
 }

@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "CSRF",
+        "deepmerge",
+        "filesize",
+        "nyaa",
+        "nyaasi"
+    ],
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+}
