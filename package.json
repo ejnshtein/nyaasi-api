@@ -1,7 +1,7 @@
 {
   "name": "@ejnshtein/nyaasi",
-  "version": "2.0.0",
-  "description": "Nyaa.si api wrapper for Node 13.5 and newer",
+  "version": "2.0.1",
+  "description": "Nyaa.si api wrapper for Node written in Typescript",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
