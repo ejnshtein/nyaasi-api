@@ -59,29 +59,6 @@ const cookiesToString = (cookies: Cookie[]): string[] =>
     return `${name}=${cookie[name]}`
   })
 
-const cookieToString = (cookie: Cookie) =>
-  Object.entries(cookie)
-    .map(([name, value]) => {
-      switch (name) {
-        case 'expires': {
-          return `Expires=${value.toGMTString()}`
-        }
-        case 'domain': {
-          return `Domain=${value}`
-        }
-        case 'httponly': {
-          return 'HttpOnly'
-        }
-        case 'path': {
-          return `Path=${value}`
-        }
-        default: {
-          return `${name}=${value}`
-        }
-      }
-    })
-    .join('; ')
-
 export class Agent {
   host: string
   apiHost: string
