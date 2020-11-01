@@ -1,6 +1,6 @@
 {
   "name": "@ejnshtein/nyaasi",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Nyaa.si api wrapper for Node written in Typescript",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -26,7 +26,7 @@
   "author": "ejnshtein",
   "license": "MIT",
   "dependencies": {
-    "@ejnshtein/smol-request": "^1.1.4",
+    "@ejnshtein/smol-request": "^1.1.5",
     "bytes-iec": "^3.1.0",
     "cheerio": "^1.0.0-rc.3",
     "deepmerge": "^4.2.2",
