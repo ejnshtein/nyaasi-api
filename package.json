@@ -1,6 +1,6 @@
 {
   "name": "@ejnshtein/nyaasi",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Nyaa.si api wrapper for Node written in Typescript",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,7 +13,8 @@
     "nyaasi"
   ],
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "types/**/*"
   ],
   "type": "commonjs",
   "husky": {
