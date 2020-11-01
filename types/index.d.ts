@@ -1,5 +1,7 @@
 import { RequestOptions } from '@ejnshtein/smol-request'
 
+export * from './nyaa'
+
 export interface Cookie {
   domain?: string
   expires?: Date

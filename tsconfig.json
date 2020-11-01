@@ -6,11 +6,13 @@
       "declaration": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "outDir": "./dist",
-      "moduleResolution": "node",
-      "types": ["node"]
+      "allowJs": true,
+      "outDir": "dist",
+      "moduleResolution": "Node",
+      "baseUrl": "."
     },
     "include": [
-      "src/**/*"
+      "src/**/*",
+      "types"
     ]
 }

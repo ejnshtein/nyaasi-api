@@ -6,7 +6,7 @@ import {
   Profile,
   SearchResult,
   ViewTorrent
-} from './types/nyaa'
+} from '../types/nyaa'
 import { URL } from 'url'
 
 export const getCSRFToken = (html: string): string => {
@@ -263,7 +263,7 @@ export const parseTorrent = (
   }
 }
 
-function getEntry(entry: string): Entry {
+export function getEntry(entry: string): Entry {
   switch (entry) {
     case 'danger':
       return '[Remake]'

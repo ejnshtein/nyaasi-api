@@ -10,7 +10,7 @@ import {
   LoginPayload,
   NyaaApiRequestResult,
   NyaaRequestOptions
-} from './types'
+} from '../types'
 
 const { version: packageVersion } = JSON.parse(
   fs.readFileSync('./package.json', 'utf-8')

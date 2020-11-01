@@ -11,9 +11,9 @@ import {
   NyaaApiRequestResult,
   NyaaRequestOptions,
   SearchOptions
-} from './types'
+} from '../types'
 import { Agent } from './Agent'
-import { Profile, SearchResult, ViewTorrent } from './types/nyaa'
+import { Profile, SearchResult, ViewTorrent } from '../types/nyaa'
 
 const DefaultOptions: AgentOptions = {
   host: 'https://nyaa.si',
