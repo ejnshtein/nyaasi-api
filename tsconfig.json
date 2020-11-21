@@ -1,18 +1,17 @@
 {
-    "compilerOptions": {
-      "module": "commonjs",
-      "target": "es2015",
-      "lib": ["ES6"],
-      "declaration": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "allowJs": true,
-      "outDir": "dist",
-      "moduleResolution": "Node",
-      "baseUrl": "."
-    },
-    "include": [
-      "src/**/*",
-      "types"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES6",
+    "lib": ["ES6"],
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "typeRoots": ["types"]
+  },
+  "include": [
+    "src"
+  ]
 }

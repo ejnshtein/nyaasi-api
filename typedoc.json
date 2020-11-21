@@ -1,0 +1,12 @@
+{
+  "name": "nyaa-api by ejnshtein",
+  "out": "docs",
+  "inputFiles": [
+    "src",
+    "types"
+  ],
+  "includeDeclarations": true,
+  "excludeExternals": true,
+  "includeVersion": true,
+  "sourcefile-url-prefix": "https://github.com/ejnshtein/nyaa-api/tree/master/"
+}

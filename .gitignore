@@ -1,2 +1,8 @@
 node_modules
 dist
+__ejnshtein
+*session
+.env
+.eslintcache
+docs
+coverage

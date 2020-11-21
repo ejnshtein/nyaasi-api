@@ -1,20 +1,26 @@
 {
   "name": "@ejnshtein/nyaasi",
-  "version": "2.2.3",
+  "version": "3.0.0",
   "description": "Nyaa.si api wrapper for Node written in Typescript",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./types/index.d.ts",
   "scripts": {
-    "build-ts": "tsc",
-    "lint": "eslint ./src --ext .ts"
+    "build": "tsc",
+    "lint": "eslint ./src --ignore-pattern *.test.*",
+    "lint:fix": "eslint ./src --ignore-pattern *.test.* --fix",
+    "test": "jest --config jest.json",
+    "pretest": "npm run build",
+    "pb": "np",
+    "build:docs": "typedoc",
+    "deploy": "npm run build && npm run build:docs && gh-pages -t -d docs -b gh-pages"
   },
   "keywords": [
     "nyaa",
     "nyaasi"
   ],
   "files": [
-    "dist/**/*",
-    "types/**/*"
+    "dist",
+    "types"
   ],
   "type": "commonjs",
   "husky": {
@@ -26,33 +32,35 @@
   "author": "ejnshtein",
   "license": "MIT",
   "dependencies": {
-    "@ejnshtein/smol-request": "^1.1.5",
     "bytes-iec": "^3.1.0",
     "cheerio": "^1.0.0-rc.3",
-    "deepmerge": "^4.2.2",
-    "rss-parser": "^3.9.0"
+    "rss-parser": "^3.9.0",
+    "smol-request": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-typescript": "^7.12.1",
     "@types/cheerio": "^0.22.22",
-    "@types/eslint": "^7.2.4",
-    "@types/node": "^14.14.6",
+    "@types/eslint": "^7.2.5",
+    "@types/node": "^14.14.9",
     "@typescript-eslint/eslint-plugin": "^4.6.0",
     "@typescript-eslint/parser": "^4.6.0",
-    "babel-plugin-add-import-extension": "^1.4.3",
-    "eslint": "^7.12.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-config-standard": "^16.0.1",
+    "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.2",
+    "eslint-plugin-standard": "^4.1.0",
     "husky": "^4.3.0",
-    "module-alias": "^2.2.2",
-    "prettier": "^2.1.2",
-    "standard": "^16.0.1",
-    "typescript": "^4.0.5"
+    "jest": "^26.6.3",
+    "np": "^7.0.0",
+    "prettier": "^2.2.0",
+    "standard": "^16.0.3",
+    "ts-jest": "^26.4.4",
+    "typedoc": "^0.19.2",
+    "typedoc-plugin-nojekyll": "^1.0.1",
+    "typedoc-plugin-sourcefile-url": "^1.0.6",
+    "typescript": "^4.1.2"
   }
 }

@@ -1,0 +1,24 @@
+name: Test & Codecov
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      NYAA_USERNAME: ${{ secrets.NYAA_USERNAME }}
+      NYAA_PASSWORD: ${{ secrets.NYAA_PASSWORD }}
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v1
+      - name: Installing dependencies
+        run: yarn
+      - name: Running tests
+        run: yarn run test
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

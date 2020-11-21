@@ -1,63 +1,28 @@
-import request, { RequestOptions, RequestResult } from '@ejnshtein/smol-request'
-import deepmerge from 'deepmerge'
+import {
+  RequestOptions,
+  RequestResult,
+  request,
+  ResponseType,
+  ResponseTypeMap
+} from 'smol-request'
 import cheerio from 'cheerio'
 import fs from 'fs'
-import { getCSRFToken, parseProfile } from './Scraper'
+import path from 'path'
 import { ParsedUrlQueryInput, stringify } from 'querystring'
+import { getCSRFToken, parseProfile } from './Scraper'
 import {
   AgentOptions,
   Cookie,
   LoginPayload,
   NyaaApiRequestResult,
   NyaaRequestOptions
-} from '../types'
+} from '../types/agent'
+import { cookiesToString, parseCookies } from './lib/cookie'
+import { deepmerge } from './lib/deepmerge'
 
-const { version: packageVersion } = JSON.parse(
-  fs.readFileSync('./package.json', 'utf-8')
+const pkg = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf-8')
 )
-
-const parseCookies = (cookies: string[]): Cookie[] =>
-  cookies.map((cookie) =>
-    cookie.split('; ').reduce((cookie, property) => {
-      switch (true) {
-        case property.toLowerCase().includes('domain'): {
-          return {
-            ...cookie,
-            domain: property.split('=').pop()
-          }
-        }
-        case property.toLowerCase().includes('expires'): {
-          return {
-            ...cookie,
-            expires: new Date(property.split('=').pop())
-          }
-        }
-        case property.toLowerCase().includes('httponly'): {
-          return {
-            ...cookie,
-            httponly: true
-          }
-        }
-        case property.includes('='): {
-          return property.split('=').map((el, i) => {
-            if (i === 0) {
-              return el.toLowerCase()
-            }
-            return el
-          })
-        }
-      }
-      return cookie
-    }, {})
-  )
-
-const cookiesToString = (cookies: Cookie[]): string[] =>
-  cookies.map((cookie) => {
-    const [name] = Object.keys(cookie).filter(
-      (key) => !['domain', 'httponly', 'expires', 'path'].includes(key)
-    )
-    return `${name}=${cookie[name]}`
-  })
 
 export class Agent {
   host: string
@@ -137,13 +102,13 @@ export class Agent {
       `${options.baseUrl || 'https://nyaa.si'}/login`
     )
     payload.csrf_token = getCSRFToken(tmpData)
-    const tmpCookies = parseCookies(tmpHeaders['set-cookie'])
+    const tmpCookies = parseCookies(tmpHeaders['set-cookie'] as string[])
     const { headers, data } = await request(
       `${options.baseUrl || 'https://nyaa.si'}/login`,
       {
         method: 'POST',
         headers: {
-          'User-Agent': `nyaa-api/${packageVersion}`,
+          'User-Agent': `nyaa-api/${pkg.version}`,
           'Content-Type': 'application/x-www-form-urlencoded',
           Cookie: cookiesToString(tmpCookies).join('; ')
         }
@@ -151,7 +116,7 @@ export class Agent {
       stringify((payload as unknown) as ParsedUrlQueryInput)
     )
 
-    const cookies = parseCookies(headers['set-cookie'])
+    const cookies = parseCookies(headers['set-cookie'] as string[])
 
     if (!cookies.some((cookie) => cookie.session)) {
       const errorText = cheerio.load(data)('div').text()
@@ -201,75 +166,90 @@ export class Agent {
     return true
   }
 
-  async call(url = '', options = {}): Promise<string> {
-    const result = await Agent.call(
+  async call<K, T extends ResponseType = 'text'>(
+    url = '',
+    options: NyaaRequestOptions<T> = {}
+  ): Promise<NonNullable<ResponseTypeMap<K>[T]>> {
+    const result = await Agent.call<K, T>(
       url,
-      deepmerge.all([
+      deepmerge(
         {
-          baseUrl: this.host,
+          baseUrl: this.host
+        },
+        options,
+        {
           headers: {
             Cookie: this.cookies.join('; ')
           }
-        },
-        options
-      ]) as NyaaRequestOptions
+        }
+      )
     )
 
     if (result.headers['set-cookie']) {
-      this.setCookies(parseCookies(result.headers['set-cookie']))
+      this.setCookies(parseCookies(result.headers['set-cookie'] as string[]))
     }
     return result.data
   }
 
-  async callApi<T>(url = '', options = {}): Promise<NyaaApiRequestResult<T>> {
+  async callApi<T>(
+    url = '',
+    options: NyaaRequestOptions<'json'> = {}
+  ): Promise<T> {
     const result = await Agent.callApi<T>(url, {
       baseUrl: this.apiHost,
       responseType: 'json',
       ...options
     })
 
-    if (result.status === 'error') {
-      throw new Error(result.message)
-    }
-
     return result
   }
 
-  static async call(
+  static async call<K, T extends ResponseType = 'text'>(
     url: string,
-    options: NyaaRequestOptions = {}
-  ): Promise<RequestResult> {
+    options: NyaaRequestOptions<T> = {}
+  ): Promise<RequestResult<NonNullable<ResponseTypeMap<K>[T]>>> {
     const finalUrl = `${options.baseUrl || 'https://nyaa.si'}${
       !(url.startsWith('/') && options.baseUrl.endsWith('/')) && '/'
     }${url}`
-    const finalOptions = deepmerge.all([
-      {
-        method: 'GET',
-        headers: {
-          'User-Agent': `nyaa-api/${packageVersion}`
-        }
-      },
-      options
-    ])
 
-    const result = await request(finalUrl, finalOptions)
-
-    if (result.data.errors) {
-      throw new Error(result.data.errors[0])
-    }
+    const result = await request<K, T>(
+      finalUrl,
+      deepmerge(
+        {
+          method: 'GET',
+          headers: {
+            'User-Agent': `nyaa-api/${pkg.version}`
+          }
+        },
+        options
+      )
+    )
 
     return result
   }
 
   static async callApi<T>(
     url: string,
-    options: NyaaRequestOptions = {}
-  ): Promise<NyaaApiRequestResult<T>> {
-    const result = await Agent.call(`api${!url.startsWith('/') && '/'}${url}`, {
-      responseType: 'json',
-      ...options
-    })
+    options: NyaaRequestOptions<'json'> = {}
+  ): Promise<T> {
+    const { data: response } = await Agent.call<
+      NyaaApiRequestResult<T>,
+      'json'
+    >(
+      url,
+      deepmerge(
+        {
+          baseUrl: 'https://nyaa.si/api'
+        },
+        options,
+        { responseType: 'json' }
+      )
+    )
 
-    return (result as unknown) as NyaaApiRequestResult<T>
+    if (response.status === 'error') {
+      throw new Error(response.message)
+    }
+
+    return response.data
   }
 }

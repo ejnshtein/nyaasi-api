@@ -1,4 +1,3 @@
-import deepmerge from 'deepmerge'
 import {
   parseComments,
   parseProfile,
@@ -8,12 +7,12 @@ import {
 import {
   AgentOptions,
   GetTorrentOptions,
-  NyaaApiRequestResult,
   NyaaRequestOptions,
   SearchOptions
-} from '../types'
+} from '../types/agent'
 import { Agent } from './Agent'
 import { Profile, SearchResult, ViewTorrent } from '../types/nyaa'
+import { deepmerge } from './lib/deepmerge'
 
 const DefaultOptions: AgentOptions = {
   host: 'https://nyaa.si',
@@ -25,7 +24,7 @@ export class Nyaa {
   agent: Agent
 
   constructor(options?: AgentOptions) {
-    this.options = Object.assign({}, DefaultOptions, options)
+    this.options = deepmerge(DefaultOptions, options)
     this.agent = new Agent(this.options)
   }
 
@@ -47,12 +46,12 @@ export class Nyaa {
     }
     const result = await this.agent.call(
       '',
-      deepmerge.all([
+      deepmerge(
         {
           params: search
         },
         params
-      ])
+      )
     )
 
     return parseSearch(result, this.options.host)
@@ -70,12 +69,12 @@ export class Nyaa {
     }
     const result = await Agent.call(
       '',
-      deepmerge.all([
+      deepmerge(
         {
           params: search
         },
         params
-      ])
+      )
     )
 
     return parseSearch(params.baseUrl || 'https://nyaa.si', result.data)
@@ -84,12 +83,12 @@ export class Nyaa {
   async getTorrent(
     id: number,
     options: GetTorrentOptions = { withComments: false }
-  ): Promise<NyaaApiRequestResult<ViewTorrent>> {
+  ): Promise<ViewTorrent> {
     const result = await this.agent.callApi<ViewTorrent>(`info/${id}`)
     if (options.withComments) {
       const comments = await this.agent.call(`view/${id}`)
 
-      result.data.comments = parseComments(comments)
+      result.comments = parseComments(comments)
     }
     return result
   }
@@ -97,15 +96,15 @@ export class Nyaa {
   static async getTorrent(
     id: number,
     options: GetTorrentOptions = { withComments: false },
-    params: NyaaRequestOptions = {}
+    params: NyaaRequestOptions<'json'> = {}
   ): Promise<ViewTorrent> {
     const result = await Agent.callApi<ViewTorrent>(`info/${id}`, params)
     if (options.withComments) {
       const comments = await Agent.call(`view/${id}`, params)
 
-      result.data.comments = parseComments(comments.data)
+      result.comments = parseComments(comments.data as string)
     }
-    return result.data
+    return result
   }
 
   async getTorrentAnonymous(
@@ -129,5 +128,3 @@ export class Nyaa {
     return parsed
   }
 }
-
-export default Nyaa
