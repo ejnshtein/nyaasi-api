@@ -62,10 +62,50 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#nyaasi" id="nyaasi" style="color: inherit; text-decoration: none;">
-					<h1>nyaasi</h1>
+				<a href="#ejnshteinnyaasi" id="ejnshteinnyaasi" style="color: inherit; text-decoration: none;">
+					<h1>@ejnshtein/nyaasi</h1>
 				</a>
-				<p>Documentation comming soon...</p>
+				<p><a href="https://www.npmjs.com/package/@ejnshtein/nyaasi"><img src="https://img.shields.io/npm/v/@ejnshtein/nyaasi.svg?style=flat-square" alt="NPM Version"></a>
+					<a href="http://npm-stat.com/charts.html?package=@ejnshtein/nyaasi"><img src="https://img.shields.io/npm/dm/@ejnshtein/nyaasi.svg?style=flat-square" alt="npm downloads"></a>
+					<a href="https://github.com/ejnshtein/nyaasi"><img src="https://img.shields.io/npm/l/@ejnshtein/nyaasi?style=flat-square" alt="License"></a>
+				<a href="https://codecov.io/gh/ejnshtein/nyaa-api"><img src="https://codecov.io/gh/ejnshtein/nyaa-api/branch/master/graph/badge.svg" alt="codecov"></a></p>
+				<p>This is unofficial <a href="https://nyaa.si">Nyaa.si</a> website api wrapper.</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<pre><code class="language-bash">npm i @ejnshtein/nyaasi
+
+<span class="hljs-comment"># or</span>
+
+yarn add @ejnshtein/nyaasi</code></pre>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h2>Example</h2>
+				</a>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> { Nyaa } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;@ejnshtein/nyaasi&#x27;</span>)
+
+Nyaa.search({
+  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Kotonoha no Niwa&#x27;</span>,
+  <span class="hljs-attr">category</span>: <span class="hljs-string">&#x27;1_2&#x27;</span>
+}).then(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Found <span class="hljs-subst">${result.torrents.length}</span> torrents.`</span>)
+})
+
+Nyaa.getTorrentAnonymous(<span class="hljs-number">890127</span>)
+  .then(<span class="hljs-function"><span class="hljs-params">torrent</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Torrent is made by <span class="hljs-subst">${torrent.submitter.name}</span>`</span>)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Stats: <span class="hljs-subst">${torrent.stats.seeders}</span> seeders, <span class="hljs-subst">${torrent.stats.leechers}</span> leechers and <span class="hljs-subst">${torrent.stats.downloaded}</span> downloads.`</span>)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Magnet link: <span class="hljs-subst">${torrent.links.magnet}</span>`</span>)
+  })
+</code></pre>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h2>API</h2>
+				</a>
+				<p>API section is available on the <a href="https://ejnshtein.github.io/nyaa-api/">website</a>.</p>
+				<hr>
+				<a href="#contact" id="contact" style="color: inherit; text-decoration: none;">
+					<h2>Contact</h2>
+				</a>
+				<p><a href="https://t.me/ejnshtein">My telegram</a> and a <a href="https://t.me/nyaasi_chat">group</a> where you can ask your questions or suggest something.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
