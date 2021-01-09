@@ -85,10 +85,10 @@ export class Nyaa {
 
   async getTorrentAnonymous(
     id: number,
-    options: GetTorrentOptions = { withComments: false },
-    params = {}
+    args: GetTorrentOptions = { withComments: false },
+    options: NyaaRequestOptions<'text'> = {}
   ): Promise<ViewTorrent> {
-    return Nyaa.getTorrentAnonymous(id, options, params)
+    return Nyaa.getTorrentAnonymous(id, args, options)
   }
 
   static async getTorrentAnonymous(
