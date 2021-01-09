@@ -5,4 +5,5 @@ __ejnshtein
 .env
 .eslintcache
 docs
+.DS_Store
 coverage
