@@ -29,6 +29,7 @@
     }
   },
   "repository": "github:ejnshtein/nyaa-api",
+  "homepage": "https://ejnshtein.github.io/nyaa-api/",
   "author": "ejnshtein",
   "license": "MIT",
   "dependencies": {
