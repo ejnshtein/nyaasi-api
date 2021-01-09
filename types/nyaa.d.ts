@@ -45,35 +45,35 @@ export interface Comment {
   text: string
 }
 
-export interface ApiTorrent {
-  id: number
-  name: string
-  url: string
-  submitter: string
-  description: string
-  information: string
-  is_complete: boolean
-  is_remake: boolean
-  is_trusted: boolean
-  main_category: string
-  main_category_id: number
-  sub_category: string
-  sub_category_id: number
-  hash_b32: string
-  hash_hex: string
-  files: {
-    [x: string]: number
-  }
-  filesize: number
-  magnet: string
-  stats: {
-    downloads: number
-    leechers: number
-    seeders: number
-  }
-  creation_date: string
-  comments?: Comment[]
-}
+// export interface ApiTorrent {
+//   id: number
+//   name: string
+//   url: string
+//   submitter: string
+//   description: string
+//   information: string
+//   is_complete: boolean
+//   is_remake: boolean
+//   is_trusted: boolean
+//   main_category: string
+//   main_category_id: number
+//   sub_category: string
+//   sub_category_id: number
+//   hash_b32: string
+//   hash_hex: string
+//   files: {
+//     [x: string]: number
+//   }
+//   filesize: number
+//   magnet: string
+//   stats: {
+//     downloads: number
+//     leechers: number
+//     seeders: number
+//   }
+//   creation_date: string
+//   comments?: Comment[]
+// }
 
 export interface ViewTorrent {
   id: number
@@ -105,7 +105,7 @@ export interface ViewTorrent {
   comments?: Comment[]
 }
 
-export interface SearchFile {
+export interface SearchTorrent {
   id: number
   category: {
     label: string
@@ -125,11 +125,29 @@ export interface SearchFile {
     seeders: number
     leechers: number
   }
-  entry: 'remake' | 'trusted' | null
+  entry: Entry
 }
 
 export interface SearchResult {
   current_page: number
   last_page: number
-  files: SearchFile[]
+  torrents: SearchTorrent[]
+}
+
+export interface RSSFile {
+  id: number
+  title: string
+  guid: string
+  description: string
+  pubDate: Date
+  seeders: number
+  leechers: number
+  downloads: number
+  infoHash: string
+  categoryId: string
+  category: string
+  size: string
+  comments: number
+  trusted: string
+  remake: string
 }

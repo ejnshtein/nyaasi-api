@@ -16,8 +16,7 @@ const pathExists = async (path: string): Promise<boolean> => {
 }
 
 export const getTestClient = async (): Promise<Nyaa> => {
-  const client = new Nyaa()
-  return client
+  return new Nyaa()
 }
 
 export const getAuthenticatedTestClient = async (): Promise<Nyaa> => {

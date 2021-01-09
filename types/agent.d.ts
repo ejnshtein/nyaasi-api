@@ -1,11 +1,8 @@
 import { RequestOptions } from 'smol-request'
 
-export interface Cookie {
-  domain?: string
-  expires?: Date
-  httponly?: boolean
-  path?: string
-  session?: string
+export interface Session {
+  sessionId?: string
+  sessionExpiration?: Date | string
 }
 
 export interface LoginPayload {
@@ -33,9 +30,17 @@ export interface AgentOptions {
   apiHost?: string
 }
 
-export interface SearchOptions {
+export interface SearchQuery {
+  title: string
   filter?: number
-  category?: string
+  category?: number | string
+  subcategory?: number
+}
+
+export interface SearchParams {
+  q: string
+  f?: number
+  c?: string
 }
 
 export interface GetTorrentOptions {
