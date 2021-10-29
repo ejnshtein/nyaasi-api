@@ -87,7 +87,7 @@ export const parseSearch = (
   html: string,
   host = 'https://nyaa.si'
 ): SearchResult => {
-  const content = ((cheerio as unknown) as typeof ch).load(html)
+  const content = (cheerio as unknown as typeof ch).load(html)
 
   const parseSearch = (i: number, el: Element): SearchTorrent => {
     const tagList = el.childNodes.filter((n) => n.type === 'tag')
@@ -268,7 +268,7 @@ export const parseSearch = (
 }
 
 export const parseTorrent = (id: number, html: string): ViewTorrent => {
-  const content = ((cheerio as unknown) as typeof ch).load(html)
+  const content = (cheerio as unknown as typeof ch).load(html)
 
   content('.servers-cost-money1').remove()
 

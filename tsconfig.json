@@ -8,8 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "moduleResolution": "Node",
-    "baseUrl": ".",
-    "typeRoots": ["types"]
+    "baseUrl": "."
   },
   "include": [
     "src"

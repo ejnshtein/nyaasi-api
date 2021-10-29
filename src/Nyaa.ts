@@ -33,7 +33,7 @@ export class Nyaa {
     const result = await this.agent.call(
       '',
       deepmerge(options, {
-        params: (searchParams as unknown) as Record<string, unknown>
+        params: searchParams as unknown as Record<string, unknown>
       })
     )
 
@@ -49,7 +49,7 @@ export class Nyaa {
     const result = await Agent.call(
       '',
       deepmerge(options, {
-        params: (searchParams as unknown) as Record<string, unknown>
+        params: searchParams as unknown as Record<string, unknown>
       })
     )
 

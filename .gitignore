@@ -7,3 +7,5 @@ __ejnshtein
 docs
 .DS_Store
 coverage
+.tmp/*
+!.tmp/.gitkeep
