@@ -9,19 +9,22 @@ import { Agent } from './Agent'
 import { SearchResult, ViewTorrent } from '../types/nyaa'
 import { deepmerge } from './lib/deepmerge'
 import { getParams } from './lib/get-params'
+import { NyaaRss } from './NyaaRss'
 
 const DefaultOptions: AgentOptions = {
-  host: 'https://nyaa.si',
+  host: 'https://nyaa.si/',
   apiHost: 'https://nyaa.si/api'
 }
 
 export class Nyaa {
   options: AgentOptions
   agent: Agent
+  rss: NyaaRss
 
   constructor(options: AgentOptions = {}) {
     this.options = deepmerge(DefaultOptions, options)
     this.agent = new Agent(this.options)
+    this.rss = new NyaaRss(this.options)
   }
 
   async search(

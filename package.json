@@ -1,6 +1,6 @@
 {
   "name": "@ejnshtein/nyaasi",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "Nyaa.si api wrapper for Node written in Typescript",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
@@ -45,7 +45,7 @@
     "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
-    "domelementtype": "^2.1.0",
+    "domelementtype": "^2.2.0",
     "dotenv": "^10.0.0",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
@@ -89,7 +89,8 @@
       "camelcase": "warn",
       "@typescript-eslint/no-unused-vars": "warn",
       "no-prototype-builtins": "off",
-      "@typescript-eslint/no-var-requires": "warn"
+      "@typescript-eslint/no-var-requires": "warn",
+      "no-useless-constructor": "off"
     }
   },
   "prettier": {

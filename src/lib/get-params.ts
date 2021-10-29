@@ -7,23 +7,6 @@ export const DefaultSearchParams: SearchParams = {
   c: '0_0'
 }
 
-export const buildCategory = ({
-  category,
-  subcategory
-}: {
-  category?: number | string
-  subcategory?: number
-}): string => {
-  if (typeof category === 'string') {
-    return category
-  }
-
-  category = typeof category === 'number' ? category : 0
-  subcategory = typeof subcategory === 'number' ? subcategory : 0
-
-  return `${category}_${subcategory}`
-}
-
 export const getParams = (query: string | SearchQuery): SearchParams => {
   if (typeof query === 'string') {
     return deepmerge(DefaultSearchParams, {
@@ -34,6 +17,6 @@ export const getParams = (query: string | SearchQuery): SearchParams => {
   return deepmerge(DefaultSearchParams, {
     q: query.title,
     f: typeof query.filter === 'number' ? query.filter : 0,
-    c: buildCategory(query)
+    c: query.category
   })
 }

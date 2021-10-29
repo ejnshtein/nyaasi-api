@@ -11,7 +11,7 @@
         "${workspaceRoot}/node_modules/.bin/jest",
         "--runInBand",
         "--config",
-        "jest.json"
+        "package.json"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",

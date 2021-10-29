@@ -40,4 +40,16 @@ describe('nyaa api', () => {
 
     expect(result.submitter.name).toEqual('DJATOM')
   })
+
+  it('should search for Kotonoha no Niwa rip by beatrice-raws on rss', async () => {
+    const client = await getTestClient()
+    const result = await client.rss.search({
+      title: 'Kotonoha no Niwa',
+      category: '1_2'
+    })
+
+    await saveResultToFile(result, 'rss.test.json')
+
+    expect(Array.isArray(result) && result.length > 0).toBe(true)
+  })
 })
