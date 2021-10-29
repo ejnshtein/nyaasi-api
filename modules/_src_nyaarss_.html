@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;src/NyaaRss&quot; | nyaa-api by ejnshtein - v3.0.2</title>
-	<meta name="description" content="Documentation for nyaa-api by ejnshtein - v3.0.2">
+	<title>&quot;src/NyaaRss&quot; | nyaa-api by ejnshtein - v3.1.0</title>
+	<meta name="description" content="Documentation for nyaa-api by ejnshtein - v3.1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">nyaa-api by ejnshtein - v3.0.2</a>
+					<a href="../index.html" class="title">nyaa-api by ejnshtein - v3.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -74,10 +74,22 @@
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_src_nyaarss_.nyaarss.html" class="tsd-kind-icon">Nyaa<wbr>Rss</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_src_nyaarss_.nyaarssoptions.html" class="tsd-kind-icon">Nyaa<wbr>Rss<wbr>Options</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_src_nyaarss_.html#parser" class="tsd-kind-icon">parser</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_src_nyaarss_.html#parseitems" class="tsd-kind-icon">parse<wbr>Items</a></li>
 							</ul>
 						</section>
 					</div>
@@ -91,9 +103,35 @@
 					<div class="tsd-signature tsd-kind-icon">parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Parser</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new RssParser({customFields: {item: [&#x27;nyaa:seeders&#x27;,&#x27;nyaa:leechers&#x27;,&#x27;nyaa:downloads&#x27;,&#x27;nyaa:infoHash&#x27;,&#x27;nyaa:categoryId&#x27;,&#x27;nyaa:category&#x27;,&#x27;nyaa:size&#x27;,&#x27;nyaa:trusted&#x27;,&#x27;nyaa:remake&#x27;,&#x27;nyaa:comments&#x27;,&#x27;description&#x27;,&#x27;guid&#x27;,&#x27;title&#x27;]}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ejnshtein/nyaa-api/tree/master/src/NyaaRss.ts#L5">src/NyaaRss.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/ejnshtein/nyaa-api/tree/master/src/NyaaRss.ts#L10">src/NyaaRss.ts:10</a></li>
 						</ul>
 					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<a name="parseitems" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> parse<wbr>Items</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Items<span class="tsd-signature-symbol">(</span>items<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Awaited</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">parseURL</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"items"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_nyaa_d_.rssfile.html" class="tsd-signature-type">RSSFile</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ejnshtein/nyaa-api/tree/master/src/NyaaRss.ts#L30">src/NyaaRss.ts:30</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>items: <span class="tsd-signature-type">Awaited</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">parseURL</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"items"</span><span class="tsd-signature-symbol">]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_types_nyaa_d_.rssfile.html" class="tsd-signature-type">RSSFile</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -128,6 +166,12 @@
 						<a href="_types_agent_d_.html">&quot;types/agent.d&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="_types_awaited_d_.html">&quot;types/awaited.d&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_types_categories_d_.html">&quot;types/categories.d&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="_types_cheerio_d_.html">&quot;types/cheerio.d&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -146,8 +190,14 @@
 					<li class=" tsd-kind-class tsd-parent-kind-module">
 						<a href="../classes/_src_nyaarss_.nyaarss.html" class="tsd-kind-icon">Nyaa<wbr>Rss</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_src_nyaarss_.nyaarssoptions.html" class="tsd-kind-icon">Nyaa<wbr>Rss<wbr>Options</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_src_nyaarss_.html#parser" class="tsd-kind-icon">parser</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_src_nyaarss_.html#parseitems" class="tsd-kind-icon">parse<wbr>Items</a>
 					</li>
 				</ul>
 			</nav>
