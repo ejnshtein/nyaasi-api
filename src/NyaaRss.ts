@@ -52,15 +52,14 @@ export interface NyaaRssOptions {
   host?: string
 }
 export class NyaaRss {
-  constructor(private options: NyaaRssOptions) {}
+  constructor(private options?: NyaaRssOptions) {}
 
   async getHome(): Promise<RSSFile[]> {
     return NyaaRss.getHome(this.options)
   }
 
-  static async getHome({
-    host = 'https://nyaa.si/'
-  }: NyaaRssOptions = {}): Promise<RSSFile[]> {
+  static async getHome(options: NyaaRssOptions = {}): Promise<RSSFile[]> {
+    const { host = 'https://nyaa.si/' } = options
     const data = await parser.parseURL(host)
 
     return parseItems(data.items)
@@ -72,8 +71,9 @@ export class NyaaRss {
 
   static async search(
     query: string | SearchQuery,
-    { host = 'https://nyaa.si/' }: NyaaRssOptions = {}
+    options: NyaaRssOptions = {}
   ): Promise<RSSFile[]> {
+    const { host = 'https://nyaa.si/' } = options
     const searchParams = new URLSearchParams(
       getParams(query) as unknown as Record<string, string | readonly string[]>
     )
