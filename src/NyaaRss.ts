@@ -60,7 +60,8 @@ export class NyaaRss {
 
   static async getHome(options: NyaaRssOptions = {}): Promise<RSSFile[]> {
     const { host = 'https://nyaa.si/' } = options
-    const data = await parser.parseURL(host)
+    const searchParams = new URLSearchParams([['page', 'rss']])
+    const data = await parser.parseURL(`${host}?${searchParams.toString()}`)
 
     return parseItems(data.items)
   }
