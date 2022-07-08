@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/@ejnshtein/nyaasi.svg?style=flat-square)](https://www.npmjs.com/package/@ejnshtein/nyaasi)
 [![npm downloads](https://img.shields.io/npm/dm/@ejnshtein/nyaasi.svg?style=flat-square)](http://npm-stat.com/charts.html?package=@ejnshtein/nyaasi)
 [![License](https://img.shields.io/npm/l/@ejnshtein/nyaasi?style=flat-square)](https://github.com/ejnshtein/nyaasi)
-[![codecov](https://codecov.io/gh/ejnshtein/nyaa-api/branch/master/graph/badge.svg)](https://codecov.io/gh/ejnshtein/nyaa-api)
+[![codecov](https://codecov.io/gh/ejnshtein/nyaasi-api/branch/master/graph/badge.svg)](https://codecov.io/gh/ejnshtein/nyaasi-api)
 
 This is unofficial [Nyaa.si](https://nyaa.si) website api wrapper.
 
@@ -40,7 +40,7 @@ Nyaa.getTorrentAnonymous(890127)
 
 ## API
 
-API section is available on the [website](https://ejnshtein.github.io/nyaa-api/).
+API section is available on the [website](https://ejnshtein.github.io/nyaasi-api/).
 
 
 ---

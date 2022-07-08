@@ -28,8 +28,8 @@
       "pre-commit": "npm run lint"
     }
   },
-  "repository": "github:ejnshtein/nyaa-api",
-  "homepage": "https://ejnshtein.github.io/nyaa-api/",
+  "repository": "github:ejnshtein/nyaasi-api",
+  "homepage": "https://ejnshtein.github.io/nyaasi-api/",
   "author": "ejnshtein",
   "license": "MIT",
   "dependencies": {

@@ -1,5 +1,5 @@
 {
-  "name": "nyaa-api by ejnshtein",
+  "name": "nyaasi-api by ejnshtein",
   "out": "docs",
   "inputFiles": [
     "src",
@@ -8,5 +8,5 @@
   "includeDeclarations": true,
   "excludeExternals": true,
   "includeVersion": true,
-  "sourcefile-url-prefix": "https://github.com/ejnshtein/nyaa-api/tree/master/"
+  "sourcefile-url-prefix": "https://github.com/ejnshtein/nyaasi-api/tree/master/"
 }
